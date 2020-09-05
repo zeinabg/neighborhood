@@ -20,7 +20,8 @@ import plotly.graph_objects as go
 base_dir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.getenv('FLASK_SECRET_KEY')
+# app.config['SECRET_KEY'] = os.getenv('FLASK_SECRET_KEY')
+app.secret_key = os.urandom(24)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(
     base_dir, 'repo', 'data.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -58,6 +59,7 @@ def radar():
     elif new_zipcode in session.get('zipcodes'):
       flash('Zipcode already included.')
     else:
+      flash('%s is added.' % new_zipcode)
       session['zipcodes'].append(new_zipcode)
     return redirect(url_for('radar'))
 
@@ -82,32 +84,17 @@ def radar():
 
 @app.route('/map', methods=['GET', 'POST'])
 def chmap():
-  form_zip = ZipcodeForm()
-  if form_zip.validate_on_submit():
-    new_zipcode = form_zip.zipcode.data
-    if not verify_zipcode(new_zipcode):
-      flash('Zipcode is not valid.')
-    elif new_zipcode in session.get('zipcodes'):
-      flash('Zipcode already included.')
-    else:
-      session['zipcodes'].append(new_zipcode)
-    return redirect(url_for('chmap'))
-
   form_score = ScoreForm()
   form_score.scores.choices = [(score, desc) for score, desc in g.score_descriptions.items()]
   if form_score.validate_on_submit():
     session['scores'] = form_score.scores.data
     return redirect(url_for('chmap'))
 
-  geo_values, score_values = retrieve_customized_data()
   ch_map = plot_ch_map()
   form_score.scores.data = session.get('scores')
   return render_template(
       'chmap.html',
-      geo_values=geo_values,
-      score_values=score_values,
       ch_map=ch_map,
-      form_zip=form_zip,
       form_score=form_score,
   )
 
@@ -159,9 +146,13 @@ def plot_radar(score_values):
 def plot_ch_map():
   matplotlib.use('Agg')
   scores = session.get('scores')
+  if not scores:
+    return ""
   col = int(np.ceil(np.sqrt(len(scores))))
   row = int(np.ceil(len(scores) / col))
   fig, axes = plt.subplots(row, col, figsize=(col * 3, row * 3))
+  if row == 1 and col == 1:
+    axes = np.array([axes])
   for ax, score in zip(axes.reshape(-1), scores):
     g.shape.plot(column=score, legend=True, ax=ax)
     ax.set_title(g.score_descriptions[score])

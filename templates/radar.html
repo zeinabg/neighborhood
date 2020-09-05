@@ -1,0 +1,53 @@
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+a {
+  border: 3px solid black;
+  margin: 3px;
+  padding: 3px;
+}
+</style>
+</head>
+<body> 
+  <div><a href="/">Radar</a><a href="/map">Maps</a> <a href="/static/description.html">What is this</a> <a href="/static/about.html">About</a> </div>
+  <h1>Neighborhood Health</h1>
+    <table style="">
+    <tr>
+      <th>County</th>
+      <th>City</th>
+      <th>Zipcode</th>
+      {% for col in score_values.columns %}
+          <th>{{ col }}</th>
+        {% endfor %}
+    </tr> 
+    {% for item in score_values.itertuples() %}
+      <tr> 
+        <td>{{geo_values.loc[item.Index].county_name}}</td>
+        <td>{{geo_values.loc[item.Index].city}}</td>
+        {% for value in item %}
+          <td>{{ value  }}</td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+    </table>
+   <form method="POST"> 
+    {{ form_zip.hidden_tag() }}
+    <div>{{ form_zip.zipcode.label }} {{ form_zip.zipcode() }} {{ form_zip.submit() }}</div>
+  </form>
+<form method="POST">
+   {{ form_score.hidden_tag() }}
+    <div style="height:100px">{{ form_score.scores.label }} {{ form_score.scores(rows=10, multiple=True) }} {{ form_score.submit() }}</div>
+   <div style="color:red">
+   {% for message in get_flashed_messages() %}
+      {{ message }}
+   {% endfor %}
+   </div>
+</form>  
+ <div>
+  {{ radar.to_html(default_width='25%', default_height='50%', full_html=False) | safe }}
+  </div>
+</body>
+</html>

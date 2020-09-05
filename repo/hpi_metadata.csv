@@ -1,0 +1,46 @@
+variable,shorttitle,definition,type,source,source_url,year
+city,City,City associated with centroid of census tract,meta,,,
+county_fips,County FIPS Code,4-digit code  of county,meta,,,
+county_name,County,Name of county,meta,,,
+geoid,Census Tract,10-digit Census Tract code,meta,,,
+hpi_top25pct,Top 25% HPI Score,Top 25% most advantaged,meta,,,
+pct2010gq,2010 Group Quarters Population,Population in group quarters in 2010,meta,,,
+pop2010,2010 Population,Total population of census tract in 2010,meta,,,
+quartiles,Quartile of HPI Score,Quartile of HPI score,primary,,,
+quintiles,Quintile of HPI Score,Quintile of HPI score,primary,,,
+urbantype,,Census classification of urban type,meta,,,
+zip,ZIP Code,5-digit postal zip code,meta,,,
+abovepoverty,Above Poverty,Percent of the population with an income exceeding 200% of federal poverty level,hpi,American Community Survey ACS_15_5YR_S1701,https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_15_5YR_S1701&prodType=table,2011-2015
+alcoffsale,Alcohol Availability,Percent of population beyond 1/4 mile of off-site sale alcohol outlets,hpi,CDPH/ABC,https://www.cdph.ca.gov/Programs/OHE/Pages/Healthy-Communities-Data-and-Indicators-Project-(HCI).aspx,2014
+automobile,Automobile Access,Percentage of households with access to an automobile,hpi,American Community Survey ACS_15_5YR_DP04,https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_15_5YR_DP04&prodType=table,2011-2015
+bachelorsed,Bachelor's Education or Higher,Percentage of population over age 25 with a bachelor's education or higher,hpi,American Community Survey ACS_15_5YR_DP02,https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_15_5YR_DP02&prodType=table,2011-2015
+commute,Active Commuting,"Percentage of workers (16 years and older) who commute to work by transit, walking, or cycling",hpi,American Community Survey ACS_15_5YR_B08301,https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_15_5YR_B08301&prodType=table,2011-2015
+dieselpm,Clean Air - Diesel PM,Spatial distribution of gridded diesel PM emissions from on-road and non-road sources for a 2012 summer day in July (kg/day) ,hpi,CalEnviroScreen 3.0,https://oehha.ca.gov/media/downloads/calenviroscreen/document/ces3results.xlsx,2017
+economic,Economic Policy Area,"Economic score, summed Z-scores of individual policy action area variables",domain,,,
+education,Education Policy Area,"Education score, summed Z-scores of individual policy action area variables",domain,,,
+employed,Employed,Percentage of population aged 25-64 who are employed,hpi,American Community Survey ACS_15_5YR_S2301,https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_15_5YR_S2301&prodType=table,2011-2015
+h20contam,Safe Drinking Water - Contaminants,Cal EnviroScreen 3.0 drinking water contaminant index for selected contaminants ,hpi,CalEnviroScreen 3.0,https://oehha.ca.gov/media/downloads/calenviroscreen/document/ces3results.xlsx,2017
+healthcareaccess,Healthcare Access Policy Area,"Healthcare Access score, z-score of insured variable",domain,,,
+homeownership,Homeownership,Percentage of occupied housing units occupied by property owners,hpi,American Community Survey ACS_15_5YR_DP04,https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_15_5YR_DP04&prodType=table,2011-2015
+houserepair,Housing Habitability,Percent of households with kitchen facilities and plumbing,hpi,HUD CHAS Table 3,https://www.huduser.gov/portal/datasets/cp.html,2010-2014
+housing,Housing Policy Area,"Housing score, summed Z-scores of individual policy action area variables",domain,,,
+hpi2score,HPI Score,Total HPI Score ,primary,,,
+neighborhood,Neighborhood Policy Area,"Neighborhood score, summed Z-scores of individual policy action area variables",domain,,,
+income,Median Household Income,Median annual household income,hpi,American Community Survey ACS_15_5YR_DP03,https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_15_5YR_DP03&prodType=table,2011-2015
+inhighschool,High School Enrollment,Percentage of 15-17 year olds enrolled in school,hpi,American Community Survey ACS_15_5YR_S1401,https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_15_5YR_S1401&prodType=table,2011-2015
+inpreschool,Preschool Enrollment,Percentage of 3 and 4 year olds enrolled in school,hpi,American Community Survey ACS_15_5YR_S1401,https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_15_5YR_S1401&prodType=table,2011-2015
+insured,Insured Adults,Percentage of adults aged 18 to 64 years currently insured,hpi,American Community Survey ACS_15_5YR_S2701,https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_15_5YR_S2701&prodType=table,2011-2015
+ownsevere,Low-Income Homeowner Severe Housing Cost Burden,Percent of low income owner households with housing costs exceeding 50% of income,hpi,HUD CHAS Table 8,https://www.huduser.gov/portal/datasets/cp.html,2010-2014
+ozone,Clear Air - Ozone,"Mean of summer months (May-October) of the daily maximum 8-hour ozone concentration (ppm), averaged over three years (2012 to 2014). ",hpi,CalEnviroScreen 3.0,https://oehha.ca.gov/media/downloads/calenviroscreen/document/ces3results.xlsx,2017
+parkaccess,Park Access,"Percentage of the population living within a half-mile of a park, beach, or open space greater than 1 acre",hpi,CDPH,https://www.cdph.ca.gov/Programs/OHE/Pages/Healthy-Communities-Data-and-Indicators-Project-(HCI).aspx,2014
+pm25,Clean Air - PM 2.5,"Annual mean concentration of PM2.5 (average of quarterly means, μg/m3), over three years (2012 to 2014) ",hpi,CalEnviroScreen 3.0,https://oehha.ca.gov/media/downloads/calenviroscreen/document/ces3results.xlsx,2017
+pollution,Clean Environment Policy Area,"Clean Environment score, summed Z-scores of individual policy action area variables",domain,,,
+rentsevere,Low-Income Renter Severe Housing Cost Burden,Percent of low income renter households with housing costs exceeding 50% of income,hpi,HUD CHAS Table 8,https://www.huduser.gov/portal/datasets/cp.html,2010-2014
+retail,Retail Density,"Gross retail, entertainment, and education employment density (jobs/acre) on unprotected land",hpi,USEPA Smart Location Database 2.0,http://www2.epa.gov/smartgrowth/smart-location-mapping#SLD,2013
+social,Social Policy Area,"Social score, summed Z-scores of individual policy action area variables",domain,,,
+supermkts,Supermarket Access,"Percentage of the urban population residing less than 1/2 mile from a supermarket/large grocery store, or the percent of the rural population living less than 1 mile from a supermarket/large grocery store",hpi,USDA Food Access Research Atlas,https://www.ers.usda.gov/data-products/food-access-research-atlas/download-the-data/,2015
+transportation,Transportation Policy Area,"Transportation score, summed Z-scores of individual policy action area variables",domain,,,
+treecanopy,Tree Canopy,Population-weighted percentage of the census tract area with tree canopy,hpi,CDPH/National Land Cover Database,https://www.cdph.ca.gov/programs/Pages/HealthyCommunityIndicators.aspx,2011
+twoparents,Two Parent Households,Percentage of children in married-couple family households or one parent with unmarried partner family households,hpi,American Community Survey ACS_15_5YR_B09008,https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_15_5YR_B09008&prodType=table,2011-2015
+uncrowded,Uncrowded Housing,Percentage of households with less or equal to 1 occupant per room,hpi,American Community Survey ACS_15_5YR_DP04,https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_15_5YR_DP04&prodType=table,2011-2015
+voting,Voting,Percentage of registered voters voting in the 2012 general election,hpi,UC Berkeley Statewide Database,http://statewidedatabase.org/d10/g12_geo_conv.html,2012

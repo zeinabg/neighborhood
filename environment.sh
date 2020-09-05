@@ -1,0 +1,3 @@
+export FLASK_APP=index.py
+export FLASK_SECRET_KEY=oldfNJVIWPMZBGHKS62957gjdmbcJFORY
+export FLASK_DEBUG=1

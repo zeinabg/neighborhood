@@ -49,14 +49,18 @@ def before_request_func():
   g.shape = geopd.read_file('repo/california_zcta/californiazcta.shp').merge(g.hpi.reset_index(), left_on='ZCTA5CE10', right_on='zip')
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def radar():
+  return display_radar()
+
+
+def display_radar():
   form_zip = ZipcodeForm()
   form_score = ScoreForm()
   form_score.scores.choices = [(score, desc) for score, desc in g.score_descriptions.items()]
+  form_score.scores.data = session.get('scores')
   geo_values, score_values = retrieve_customized_data()
   radar = plot_radar(score_values)
-  form_score.scores.data = session.get('scores')
   return render_template(
       'radar.html',
       geo_values=geo_values,
@@ -67,7 +71,7 @@ def radar():
   )
 
 
-@app.route('/zip', methods=['GET', 'POST'])
+@app.route('/zip', methods=['POST'])
 def radar_zip():
   form_zip = ZipcodeForm()
   if form_zip.validate_on_submit():
@@ -80,15 +84,17 @@ def radar_zip():
       flash('%s is added.' % new_zipcode)
       session['zipcodes'].append(new_zipcode)
     return redirect(url_for('radar'))
+  return display_radar()
 
 
-@app.route('/score', methods=['GET', 'POST'])
+@app.route('/score', methods=['POST'])
 def radar_score():
   form_score = ScoreForm()
   form_score.scores.choices = [(score, desc) for score, desc in g.score_descriptions.items()]
   if form_score.validate_on_submit():
     session['scores'] = form_score.scores.data
     return redirect(url_for('radar'))
+  return display_radar()
 
 
 @app.route('/map', methods=['GET', 'POST'])

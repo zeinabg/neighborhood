@@ -33,11 +33,11 @@ a {
       </tr>
     {% endfor %}
     </table>
-   <form method="POST"> 
+   <form method="POST" action="{{ url_for('radar_zip') }}"> 
     {{ form_zip.hidden_tag() }}
     <div>{{ form_zip.zipcode.label }} {{ form_zip.zipcode() }} {{ form_zip.submit() }}</div>
   </form>
-<form method="POST">
+<form method="POST" action="{{ url_for('radar_score') }}">
    {{ form_score.hidden_tag() }}
     <div style="height:100px">{{ form_score.scores.label }} {{ form_score.scores(rows=10, multiple=True) }} {{ form_score.submit() }}</div>
    <div style="color:red">

@@ -52,23 +52,8 @@ def before_request_func():
 @app.route('/', methods=['GET', 'POST'])
 def radar():
   form_zip = ZipcodeForm()
-  if form_zip.validate_on_submit():
-    new_zipcode = form_zip.zipcode.data
-    if not verify_zipcode(new_zipcode):
-      flash('Zipcode is not valid.')
-    elif new_zipcode in session.get('zipcodes'):
-      flash('Zipcode already included.')
-    else:
-      flash('%s is added.' % new_zipcode)
-      session['zipcodes'].append(new_zipcode)
-    return redirect(url_for('radar'))
-
   form_score = ScoreForm()
   form_score.scores.choices = [(score, desc) for score, desc in g.score_descriptions.items()]
-  if form_score.validate_on_submit():
-    session['scores'] = form_score.scores.data
-    return redirect(url_for('radar'))
-
   geo_values, score_values = retrieve_customized_data()
   radar = plot_radar(score_values)
   form_score.scores.data = session.get('scores')
@@ -80,6 +65,30 @@ def radar():
       form_zip=form_zip,
       form_score=form_score,
   )
+
+
+@app.route('/zip', methods=['GET', 'POST'])
+def radar_zip():
+  form_zip = ZipcodeForm()
+  if form_zip.validate_on_submit():
+    new_zipcode = form_zip.zipcode.data
+    if not verify_zipcode(new_zipcode):
+      flash('Zipcode is not valid.')
+    elif new_zipcode in session.get('zipcodes'):
+      flash('Zipcode already included.')
+    else:
+      flash('%s is added.' % new_zipcode)
+      session['zipcodes'].append(new_zipcode)
+    return redirect(url_for('radar'))
+
+
+@app.route('/score', methods=['GET', 'POST'])
+def radar_score():
+  form_score = ScoreForm()
+  form_score.scores.choices = [(score, desc) for score, desc in g.score_descriptions.items()]
+  if form_score.validate_on_submit():
+    session['scores'] = form_score.scores.data
+    return redirect(url_for('radar'))
 
 
 @app.route('/map', methods=['GET', 'POST'])

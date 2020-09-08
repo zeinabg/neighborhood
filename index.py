@@ -20,8 +20,8 @@ import plotly.graph_objects as go
 base_dir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
-# app.config['SECRET_KEY'] = os.getenv('FLASK_SECRET_KEY')
-app.secret_key = os.urandom(24)
+app.config['SECRET_KEY'] = os.getenv('FLASK_SECRET_KEY')
+# app.secret_key = os.urandom(24)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(
     base_dir, 'repo', 'data.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
